@@ -7,6 +7,7 @@ class CityScreen extends StatefulWidget {
 }
 
 class _CityScreenState extends State<CityScreen> {
+  String? cityName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,44 +38,36 @@ class _CityScreenState extends State<CityScreen> {
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      icon: Icon(
-                        Icons.location_city,
-                        color: Colors.white,
-                      ),
-                      hintText: 'Enter a city name',
-                      hintStyle: TextStyle(
-                        color: Colors.grey,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
-                        ),
-                        borderSide: BorderSide.none,
-                      )),
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                  decoration: kTextFieldInputDecoration,
+                  onChanged: (value) {
+                    cityName = value;
+                  },
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 5,
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context, cityName);
+                },
                 style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding: EdgeInsets.all(10),
                   backgroundColor: Colors.grey,
-                  minimumSize: Size(160, 40),
+                  minimumSize: Size(150, 40),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
                 child: Text(
                   'Get Weather',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 23,
+                    fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
